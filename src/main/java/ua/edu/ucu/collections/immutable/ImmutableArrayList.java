@@ -2,7 +2,6 @@ package ua.edu.ucu.collections.immutable;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
-import java.util.Objects;
 
 public final class ImmutableArrayList implements ImmutableList {
     private Object[] elements;
@@ -38,15 +37,15 @@ public final class ImmutableArrayList implements ImmutableList {
         if (index < 0 || index > this.size) {
             throw new IndexOutOfBoundsException();
         }
-        int len_c = c.length;
-        Object[] finalArr = new Object[this.size + len_c];
+        int len = c.length;
+        Object[] finalArr = new Object[this.size + len];
         for (int i = 0; i < finalArr.length; ++i) {
             if (i < index) {
                 finalArr[i] = this.elements[i];
-            } else if (i < index + len_c) {
+            } else if (i < index + len) {
                 finalArr[i] = c[i - index];
-            } else if (i >= len_c) {
-                finalArr[i] = this.elements[i - len_c];
+            } else if (i >= len) {
+                finalArr[i] = this.elements[i - len];
             }
         }
         return new ImmutableArrayList(finalArr);

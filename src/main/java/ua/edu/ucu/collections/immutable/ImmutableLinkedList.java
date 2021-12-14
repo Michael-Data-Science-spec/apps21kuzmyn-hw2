@@ -63,7 +63,7 @@ public final class ImmutableLinkedList implements ImmutableList {
         if (index < 0 || index > this.size) {
             throw new IndexOutOfBoundsException();
         }
-        int len_c = c.length;
+        int len = c.length;
         Object[] initialArr = new Object[this.size];
         if (this.size > 0) {
             Node cur;
@@ -73,16 +73,16 @@ public final class ImmutableLinkedList implements ImmutableList {
                 cur = cur.getNext();
             }
         }
-        Object[] finalArr = new Object[this.size + len_c];
+        Object[] finalArr = new Object[this.size + len];
         for (int i = 0; i < finalArr.length; i++) {
             if (i < index) {
                 finalArr[i] = initialArr[i];
             }
-            else if (i >= index && i < index + len_c) {
+            else if (i >= index && i < index + len) {
                 finalArr[i] = c[i - index];
             }
             else {
-                finalArr[i] = initialArr[i - len_c];
+                finalArr[i] = initialArr[i - len];
             }
         }
         return new ImmutableLinkedList(finalArr);
@@ -119,7 +119,7 @@ public final class ImmutableLinkedList implements ImmutableList {
             if (i < index) {
                 finalArr[i] = initialArr[i];
             }
-            else if(i > index) {
+            else if (i > index) {
                 finalArr[i - 1] = initialArr[i];
             }
         }
