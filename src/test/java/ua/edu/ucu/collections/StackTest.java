@@ -1,6 +1,7 @@
 package ua.edu.ucu.collections;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -28,5 +29,7 @@ public class StackTest {
     @Test
     public void peek() {
         assertEquals(5, stack.peek());
+        assertEquals(5, stack.pop());
+        assertEquals(4, stack.peek());
     }
 }
